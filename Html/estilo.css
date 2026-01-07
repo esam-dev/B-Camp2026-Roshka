@@ -1,0 +1,70 @@
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2933; /* gris oscuro pro */
+    letter-spacing: 0.5px;
+}
+
+.titulo img {
+    width: 60px;   /* acá reducís el tamaño del logo */
+    height: auto;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+h2 {
+    text-overflow: inherit;
+    vertical-align: middle; /* Alinea la foto con el texto de al lado */
+
+}
+
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: #fefefe;
+}
+
+th, td { 
+    border: 2px solid rgb(212, 209, 209);
+    padding:8px;
+    text-align: center;
+}
+
+th {
+    background-color: #fefefe;
+    color:rgb(176, 173, 173);
+}
+
+/* filas impares */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9 ;
+}
+
+.equipo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.equipo img {
+    width:24px ;
+    height: 24px;
+    object-fit: contain;
+
+}
+
+.pos {
+    font-weight: bold;
+    width: 20px;
+    text-align: right;
+}
