@@ -1,0 +1,30 @@
+body {
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+text-align: center;
+margin: 20px;
+}
+
+#tablero {
+    margin: 20px;
+    border: collapse;
+}
+
+#tablero.td {
+ width: 80px;
+ height: 80px;
+ border: 2px solid #333;
+ font-size: 2em;
+ text-align: center;
+ vertical-align: middle;
+ cursor: pointer;
+}
+
+#tablero td:hover {
+    background-color: bisque;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px ;
+    font-size: 1em ;
+}
