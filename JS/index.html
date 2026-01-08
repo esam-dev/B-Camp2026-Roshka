@@ -1,47 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tateti - Juego </title>
+    <title>TaTeTi - Juego</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <h1> Bienvenido a Tateti con Javascript</h1>
+    <h1>Bienvenido a TaTeTi con Javascript</h1>
+
     <div>
-           <label for="jugador1">Nombre Jugador 1: </label>
-            <input type="text" id="jugador1" placeholder="Jugador 1 (X)">
-           <label for="jugador2">Nombre Jugador 2: </label>
-            <input type="text" id="jugador2" placeholder="Jugador 2(O)">
-           <label for="simbolo">Seleccionar X  o O para el Jugador 1 :</label>
-           <select id="simbolo">
-            <oprtion value="">--Saleccionar--</oprtion>
-            <option value ="X">X</option>
+        <label for="jugador1">Nombre Jugador 1:</label>
+        <input type="text" id="jugador1" placeholder="Jugador 1 (X)">
+
+        <label for="jugador2">Nombre Jugador 2:</label>
+        <input type="text" id="jugador2" placeholder="Jugador 2 (O)">
+
+        <label for="simbolo">Seleccionar X o O para el Jugador 1:</label>
+        <select id="simbolo">
+            <option value="">--Seleccionar--</option>
+            <option value="X">X</option>
             <option value="O">O</option>
-            <button>Iniciar Juego</button>
-           </select>
+        </select>
+
+        <button id="iniciar">Iniciar Juego</button>
     </div>
 
-    <table id ="tablero">
+    <table id="tablero">
         <tr>
             <td data-index="0"></td>
             <td data-index="1"></td>
             <td data-index="2"></td>
         </tr>
-         <tr>
+        <tr>
             <td data-index="3"></td>
             <td data-index="4"></td>
             <td data-index="5"></td>
         </tr>
-         <tr>
+        <tr>
             <td data-index="6"></td>
             <td data-index="7"></td>
             <td data-index="8"></td>
         </tr>
     </table>
-    <button id="reiniciar">Reiniciar  Juego</button>
 
-   
+    <button id="reiniciar">Reiniciar Juego</button>
+
     <script src="script.js"></script>
 </body>
 </html>
