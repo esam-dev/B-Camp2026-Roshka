@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ejercicio 1 -Uso solo HTML y CSS</title>
+  <style>
+    /*
+    ==========================================================
+    Ejercicio 1 (documentado por partes) - Solo HTML y CSS
+    Requerimientos clave (resumen):
+      - 5 imágenes de 200x200px dentro de un contenedor con borde, centrado horizontalmente.
+      - Disposición en cascada diagonal.
+      - En hover sobre una imagen: resaltar borde, traer al frente, ocultar imágenes posteriores.
+      - Al salir del hover: restaurar estado original.
+    ==========================================================
+    */
+
+    /*
+    Parte 1: Normalización y variables
+      - box-sizing: border-box para tener control consistente de tamaños.
+      - Variables CSS: tamaño de imagen y paso (offset) entre imágenes.
+    */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --size: 200px;   /* tamaño del lado de cada imagen */
+      --step: 30px;    /* desplazamiento incremental (x,y) entre imágenes */
+      --border: 4px;   /* grosor del borde de las imágenes */
+      --border-base: #999;  /* color de borde por defecto */
+      --border-hover: #ff6a00; /* color de borde al hacer hover */
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+      color: #222;
+      background: #fafafa;
+    }
+
+    /*
+    Parte 2: Contenedor principal (.gallery)
+      - position: relative: contexto para posicionamiento absoluto de las imágenes.
+      - width/height: calculados para contener todas las imágenes con los desplazamientos.
+      - margin: 40px auto: centrado horizontal con un margen superior/inferior.
+      - border: borde visible alrededor del contenedor.
+    */
+    .gallery {
+      position: relative;
+      width: calc(var(--size) + var(--step) * 4);
+      height: calc(var(--size) + var(--step) * 4);
+      margin: 40px auto;
+      border: 2px solid #ccc;
+      background: white;
+    }
+
+    /*
+    Parte 3: Elementos imagen (.item)
+      - position: absolute y anclaje en (0,0). Los desplazamientos se aplican con transform.
+      - border: borde visible para poder resaltar en hover.
+      - transition: transiciones suaves en hover (borde, opacidad, transform).
+      - img: asegura que la imagen rellene 200x200 y recorte con object-fit.
+    */
+    .item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--size);
+      height: var(--size);
+      border: var(--border) solid var(--border-base);
+      background: #eee;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      transition: border-color .2s ease, opacity .2s ease, transform .2s ease;
+      overflow: hidden;
+    }
+    .item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /*
+    Parte 4: Orden de apilamiento y desplazamiento (cascada)
+      - Cada nth-child recibe un translate(x,y) incremental en diagonal (abajo-derecha).
+      - z-index incremental para que, por defecto, la última quede encima.
+      - Nota: La orientación diagonal (abajo-derecha) garantiza que todas queden dentro del contenedor.
+    */
+    .item:nth-child(1) { transform: translate(0, 0); z-index: 1; }
+    .item:nth-child(2) { transform: translate(calc(var(--step) * 1), calc(var(--step) * 1)); z-index: 2; }
+    .item:nth-child(3) { transform: translate(calc(var(--step) * 2), calc(var(--step) * 2)); z-index: 3; }
+    .item:nth-child(4) { transform: translate(calc(var(--step) * 3), calc(var(--step) * 3)); z-index: 4; }
+    .item:nth-child(5) { transform: translate(calc(var(--step) * 4), calc(var(--step) * 4)); z-index: 5; }
+
+    /*
+    Parte 5: Interacción hover
+      - La imagen bajo el cursor: resalta su borde y se eleva sobre todas (z-index mayor).
+      - Todas las imágenes posteriores (hermanos posteriores en el DOM) desaparecen.
+      - pointer-events: none en las ocultas para evitar que capten el mouse.
+      - Al salir del hover, se restaura el estado automáticamente por cascada.
+    */
+    .item:hover {
+      border-color: var(--border-hover);
+      z-index: 10; /* asegurar que quede por encima del resto */
+    }
+    .item:hover ~ .item {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /*
+    Parte 6: Accesibilidad visual y enfoque con teclado (opcional)
+      - Permite navegar con Tab si se quisiera. Al enfocarse, aplica el mismo estilo que hover.
+    */
+    .item:focus-visible {
+      outline: none;
+      border-color: var(--border-hover);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Estructura HTML
+    - Contenedor .gallery centrado, con 5 elementos .item.
+    - Las imágenes usan placeholders de 200x200 (picsum) para cumplir el requisito de tamaño sin descargar archivos.
+    - El orden de los elementos (1 a 5) importa: "posteriores" se refiere a los que están a la derecha en el marcado.
+  -->
+  <div class="gallery" aria-label="Galería de imágenes en cascada">
+    <figure class="item" tabindex="0">
+      <img src="https://picsum.photos/seed/1/200" alt="Imagen 1 de 5" />
+    </figure>
+    <figure class="item" tabindex="0">
+      <img src="https://picsum.photos/seed/2/200" alt="Imagen 2 de 5" />
+    </figure>
+    <figure class="item" tabindex="0">
+      <img src="https://picsum.photos/seed/3/200" alt="Imagen 3 de 5" />
+    </figure>
+    <figure class="item" tabindex="0">
+      <img src="https://picsum.photos/seed/4/200" alt="Imagen 4 de 5" />
+    </figure>
+    <figure class="item" tabindex="0">
+      <img src="https://picsum.photos/seed/5/200" alt="Imagen 5 de 5" />
+    </figure>
+  </div>
+
+  <!--
+    Cómo validar (manual):
+      1) Abrir este archivo en el navegador.
+      2) Ver que el contenedor tenga borde y esté centrado.
+      3) Las 5 imágenes deben aparecer en cascada diagonal hacia abajo-derecha.
+      4) Pasar el mouse sobre la 3ra imagen: su borde cambia, se apila por encima y la 4ta/5ta desaparecen.
+      5) Al salir del hover, todo vuelve al estado original.
+
+    Ajustes rápidos:
+      - Cambiar --step en :root para variar el solapamiento (por defecto 30px).
+      - Sustituir los src de las imágenes por tus propias imágenes 200x200.
+  -->
+</body>
+</html>
