@@ -1,30 +1,41 @@
 body {
-font-family: Verdana, Geneva, Tahoma, sans-serif;
-text-align: center;
-margin: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin: 20px;
 }
 
 #tablero {
-    margin: 20px;
-    border: collapse;
+  margin: 20px auto;
+  border-collapse: collapse;
 }
 
-#tablero.td {
- width: 80px;
- height: 80px;
- border: 2px solid #333;
- font-size: 2em;
- text-align: center;
- vertical-align: middle;
- cursor: pointer;
+#tablero td {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #333;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 #tablero td:hover {
-    background-color: bisque;
+  background-color: bisque;
+}
+
+#tablero.deshabilitado {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.estado {
+  min-height: 1.5em;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 button {
-    margin: 10px;
-    padding: 10px 20px ;
-    font-size: 1em ;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
 }
