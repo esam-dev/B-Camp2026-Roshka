@@ -53,6 +53,38 @@ function iniciarJuego() {
   actualizarEstado(`Turno: ${turno} (${turno === simbolos.j1 ? jugador1 : jugador2})`);
 }
 
+// funcion de jugar  
+function jugar(e) {
+  if (!juegoActivo) return;
+   
+  const celda = e.target;
+  const index = celda.dataset.index;
+
+  if (tablero[index]!== "") return;
+  tablero[index] = turno;
+  celda.textContent = turno;
+
+  if (verificarGanador()){
+    const ganador = turno === simbolos.j1 ? jugador1 : jugador2;
+    actualizarEstado(  `Ganó ${ganador}` );
+    alert()`Ganó ${ganador}`;
+    juegoActivo = false;
+    return;
+  }
+
+  if (!tablero.includes("")){
+    actualizarEstado("Empate");
+    alert("Empate !")
+    juegoActivo = false;
+    return;
+  }
+
+  turno = turno === "X" ? "O" : "X";
+  actualizarEstado(`Turno: ${turno} (${turno === simbolos.j1 ? jugador1 : jugador2})`
+  );
+}
+
+
 // funcion  de reiniciar juego 
 function reiniciarJuego() {
   juegoActivo = false;
