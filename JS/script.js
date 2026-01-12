@@ -84,6 +84,25 @@ function jugar(e) {
   );
 }
 
+// funcion de verificar ganador 
+function verificarGanador(){
+  const combinaciones = [
+     [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+
+  return combinaciones.some(c=> 
+    tablero[c[0]] &&
+    tablero[c[0]] === tablero[c[1]] &&
+    tablero[c[0]] === tablero[c[2]]
+  );
+}
+
+document.querySelectorAll( '#tablero td').forEach(td =>{
+  td.addEventListener('click', jugar);
+})
+
 
 // funcion  de reiniciar juego 
 function reiniciarJuego() {
