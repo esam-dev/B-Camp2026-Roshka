@@ -1,3 +1,4 @@
+const { act } = require("react");
 
 const jugador1Input = document.getElementById('jugador1');
 const jugador2Input = document.getElementById('jugador2');
@@ -65,6 +66,10 @@ function jugar(e) {
   tablero[index] = turno;
   celda.textContent = turno;
 
+  if (contraComputadora && turno === simbolos.j2) {
+    setTimeout(jugarComputadora, 500);
+  }
+
   if (verificarGanador()){
     const ganador = turno === simbolos.j1 ? jugador1 : jugador2;
     actualizarEstado(  `Ganó ${ganador}` );
@@ -89,9 +94,62 @@ function jugar(e) {
 function jugarComputadora () {
   if (!juegoActivo) return;
 
-  //buscar casillas vacias 
-  const libres = tablero 
+  let index =null;
+  // intenta ganar 
+  index = encontrarMejorMovimientos(simbolos.j2);
+
+  // bloquea al humano 
+  if (index === null) {
+      index = encontrarMejorMovimientos(simbolos.j1);
+  }
+
+  // Jugar al centro 
+  if (index === null && tablero[4] === ("")){
+    index = 4;
+  }
+
+  // jugar en una  esquina 
+  const esquinas = [0,2,6,8];
+  if (index === null ){
+    index = esquinas.find(i => tablero[i] === "") ?? null;
+  }
+
+  // jugar cualquier celda libre 
+  if (index === null) {
+    const libre = tablero
+      .map((v,i) => v === "" ? i : null)
+      .filter(i => i  !== null);
+      index = libres [0];
+  }
+
+  tablero [index] = turno;
+
+  const celda = document.querySelector(
+    `#tablero td[data-index="${index}"]`
+  );
+  celda.textContent = turno;
+
+
+// Verificar si la IA gano  
+  if (verificarGanador()){
+    actualizarEstado("Ganó la IA ");
+    alert("Ganó  la IA ");
+    juegoActivo = false;
+    return;
+  }
+
+  if (!tablero.includes("")){
+    actualizarEstado("Empate");
+    alert("Empate !")
+    juegoActivo = false;
+    return;
+  }
+  
+  turno = simbolos.j1;
+  actualizarEstado( `Turno: ${jugador1}`);
+
 }
+
 //funcion para que la computadora calcule  mejores jugadas
  function encontrarMejorMovimientos(simbolo) {
   const combinaciones = [
