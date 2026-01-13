@@ -37,14 +37,17 @@ limit 10;
 
 
 /* Ejercicio  4 - Top proveedor de productos */
-select 
-   p.nombre as proveedor, 
-   COUNT(pr.id) as  total_productos 
-from proveedor  p 
+SELECT 
+   p.nombre AS proveedor, 
+   COUNT(pr.id) AS total_productos 
+FROM proveedor  p 
 join producto pr on pr.proveedor_id  = p.id 
 group by p.nombre 
 order by total_productos desc
 limit 5;
+
+
+
 
 
 
