@@ -87,3 +87,14 @@ select
  where f.id = 123; 
 
 
+/* Ejercicio 8 - Monto de facturas ordenadas segun totales */
+select 
+   f.id  as factura_id,
+   f.fecha_emision,
+   f.cliente_id,
+   f.total
+   from  factura f
+   order by f.total desc;
+
+
+
