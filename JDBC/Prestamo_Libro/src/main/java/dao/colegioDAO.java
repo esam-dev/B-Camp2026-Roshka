@@ -56,8 +56,23 @@ public class ColegioDAO {
             ps.executeUpdate();
 
         } catch(SQLException e ) {
-           e.printStackTrace();         
+           e.printStackTrace();
         }
 
+    }
+
+    // DELETE
+    public void eliminar (int codColegio){
+        String sql = "DELETE FROM colegio WHERE cod_colegio = ?";
+
+        try(Connection conn = Conexion.getConexion();
+        PreparedStatement ps = conn.preparedStatement(sql)) {
+
+            ps.setInt(1,codColegio);
+            ps.executeUpdate();
+
+        }catch (SQLException e ){
+            ps.printStackTrace();
+        }
     }
 }
