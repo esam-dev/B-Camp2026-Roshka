@@ -66,7 +66,7 @@ public class ColegioDAO {
         String sql = "DELETE FROM colegio WHERE cod_colegio = ?";
 
         try(Connection conn = Conexion.getConexion();
-        PreparedStatement ps = conn.preparedStatement(sql)) {
+        PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1,codColegio);
             ps.executeUpdate();
