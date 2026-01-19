@@ -13,15 +13,16 @@ public class PrestamoDAO {
     // METODO INSERTAR
     public void insertar (Prestamo prestamo){
         String sql = """
-                        INSERT INTO prestamo (cod_libro, cod_profesor, cod_asignatura, cod_curso, fecha_prestamo)
-                        VALUES (?,?,?,?,?)
-                        """;
-
+            INSERT INTO prestamo
+            (cod_libro, cod_profesor, cod_asignatura, cod_curso, fecha_prestamo)
+            VALUES (?, ?, ?, ?, ?)
+        """;
         try (Connection conn = Conexion.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)){
 
+
+            ps.setInt(2,prestamo.getCodLibro());
             ps.setInt(1,prestamo.getCodProfesor());
-            ps.setInt(2,prestamo.getCodlibro());
             ps.setInt(3,prestamo.getCodAsignatura());
             ps.setInt(4,prestamo.getCodCurso());
             ps.setDate(5,prestamo.getFechaPrestamo());
@@ -43,15 +44,15 @@ public class PrestamoDAO {
             ResultSet rs = st.executeQuery(sql)){
 
             while (rs.next()){
-                    Prestamo p =  new Prestamo();
-                    p.setCodPrestamo(rs.getInt("cod_prestamo"));
-                    p.setCodProfesor(rs.getInt("cod_profesor"));
-                    p.setCodLibro(rs.getInt("cod_libro"));
-                    p.setCodAsignatura(rs.getInt("cod_asignatura"));
-                    p.setCodCurso(rs.getInt("cod_curso"));
-                    p.setFechaPrestamo(rs.getDate("fecha_prestamo"));
+                Prestamo p =  new Prestamo();
+                p.setCodPrestamo(rs.getInt("cod_prestamo"));
+                p.setCodProfesor(rs.getInt("cod_profesor"));
+                p.setCodLibro(rs.getInt("cod_libro"));
+                p.setCodAsignatura(rs.getInt("cod_asignatura"));
+                p.setCodCurso(rs.getInt("cod_curso"));
+                p.setFechaPrestamo(rs.getDate("fecha_prestamo"));
 
-                    lista.add(p);
+                lista.add(p);
 
             }
 
@@ -73,11 +74,11 @@ public class PrestamoDAO {
         try (Connection conn = Conexion.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, prestamo.getCodProfesor());
-            ps.setInt(2, prestamo.getCodCurso());
-            ps.setInt(3, prestamo.getCodLibro());
-            ps.setInt(4, prestamo.getCodAsignatura());
-            ps.setDate(5, prestamo.getFechaPrestamo());
+            ps.setInt(1, Prestamo.getCodProfesor());
+            ps.setInt(2, Prestamo.getCodCurso());
+            ps.setInt(3, Prestamo.getCodLibro());
+            ps.setInt(4, Prestamo.getCodAsignatura());
+            ps.setDate(5,Prestamo.getFechaPrestamo());
 
             ps.executeUpdate();
 
