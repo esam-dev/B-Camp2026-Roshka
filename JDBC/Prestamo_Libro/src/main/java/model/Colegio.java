@@ -17,7 +17,8 @@ public class Colegio {
         return nomColegio;
     }
 
-    public set nomColegio (String nomColegio) {
+    public void setNomColegio (String nomColegio) {
         this.nomColegio = nomColegio;
     }
+
 }

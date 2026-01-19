@@ -1,4 +1,5 @@
 package dao;
+
 import config.Conexion;
 import model.Colegio;
 
@@ -9,21 +10,22 @@ import java.util.List;
 public class ColegioDAO {
 
     // INSERT
-    public void insertar(ColegioDAO colegio) {
-        String sql = "INSERT INTO colegio (nom_colegio) VALUES (?) ";
+    public void insertar(Colegio colegio) {
+        String sql = "INSERT INTO colegio (nom_colegio) VALUES (?)";
 
         try (Connection conn = Conexion.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, colegio.getNomColegio());
             ps.executeUpdate();
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     // LISTAR
-    public List<Colegio> Listar() {
+    public List<Colegio> listar() {
         List<Colegio> lista = new ArrayList<>();
         String sql = "SELECT * FROM colegio";
 
@@ -38,41 +40,41 @@ public class ColegioDAO {
 
                 lista.add(c);
             }
-        } catch (Exception e ){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return lista;
     }
 
     // UPDATE
-    public void actualizar(){
-        String sql = "UPDATE colegio SET nom_colegio = ?  WHERE  cod_colegio = ?";
+    public void actualizar(Colegio colegio) {
+        String sql = "UPDATE colegio SET nom_colegio = ? WHERE cod_colegio = ?";
 
-        try (Connection conn = Conexion.getConexion());
-            PreparedStatement ps = conn.prepareStatement(sql)){
+        try (Connection conn = Conexion.getConexion();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, colegiogetNomColegio());
-            ps.setInt(2, colegiogetCodColegio());
+            ps.setString(1, colegio.getNomColegio());
+            ps.setInt(2, colegio.getCodColegio());
             ps.executeUpdate();
 
-        } catch(SQLException e ) {
-           e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
 
     // DELETE
-    public void eliminar (int codColegio){
+    public void eliminar(int codColegio) {
         String sql = "DELETE FROM colegio WHERE cod_colegio = ?";
 
-        try(Connection conn = Conexion.getConexion();
-        PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = Conexion.getConexion();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1,codColegio);
+            ps.setInt(1, codColegio);
             ps.executeUpdate();
 
-        }catch (SQLException e ){
-            ps.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
