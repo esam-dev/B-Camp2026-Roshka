@@ -1,22 +1,22 @@
 package model;
 
 public class Asignatura {
-    private int codColegio;
-    private String nomColegio;
+    private int codAsignatura;
+    private String nomAsignatura;
 
     public int getCodColegio(){
-        return codColegio;
+        return codAsignatura;
     }
 
     public void setCodColegio(int codColegio){
-        this.codColegio = codColegio;
+        this.codAsignatura = codAsignatura;
     }
 
     public String getNomColegio(){
-        return nomColegio;
+        return nomAsignatura;
     }
 
     public void setNomColegio(String nomColegio){
-        this.nomColegio = nomColegio;
+        this.nomAsignatura = nomColegio;
     }
 }
