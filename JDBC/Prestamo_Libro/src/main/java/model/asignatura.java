@@ -1,6 +1,6 @@
 package model;
 
-public class asignatura {
+public class Asignatura {
     private int codColegio;
     private String nomColegio;
 

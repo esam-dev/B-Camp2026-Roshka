@@ -1,7 +1,7 @@
 package dao;
 
 import config.Conexion;
-import model.asignatura;
+import model.Asignatura;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class AsignaturaDAO {
     }
 
     // METODO LISTAR
-    public List<asignatura> listar() {
-        List<asignatura> lista = new ArrayList<>();
+    public List<Asignatura> listar() {
+        List<Asignatura> lista = new ArrayList<>();
         String sql = "SELECT FROM asignatuura";
 
         try (Connection conn = Conexion.getConexion();
@@ -34,7 +34,7 @@ public class AsignaturaDAO {
              ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
-                asignatura a = new asignatura();
+                Asignatura a = new Asignatura();
                 a.setCodColegio(rs.getInt("cod_asignatura"));
                 a.setNomColegio(rs.getString("nom_aignatura"));
 

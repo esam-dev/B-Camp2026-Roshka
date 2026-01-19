@@ -1,7 +1,7 @@
 package dao;
 
 import config.Conexion;
-import model.curso;
+import model.Curso;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ import java.util.List;
        }
 
        // METODO LISTAR
-       public List<curso> listar() {
-           List<curso> lista = new ArrayList<>();
+       public List<Curso> listar() {
+           List<Curso> lista = new ArrayList<>();
            String sql = "SELECT * FROM curso";
 
            try (Connection conn = Conexion.getConexion();
@@ -36,7 +36,7 @@ import java.util.List;
                 ResultSet rs = st.executeQuery(sql))
 
            while (rs.next()) {
-               curso c = new curso();
+               Curso c = new Curso();
                c.setCodCurso(rs.getInt("cod_curso"));
                c.setNomCurso(rs.getString("nom_curso"));
                c.setAula(rs.getString("Aula"));
@@ -80,8 +80,8 @@ import java.util.List;
                     }
        }
     // METODO LISTAR
-    public List<curso> listar(){
-        List<curso> lista = new ArrayList<>();
+    public List<Curso> listar(){
+        List<Curso> lista = new ArrayList<>();
         String sql ="SELECT * FROM curso";
 
         try( Connection conn = Conexion.getConexion();
@@ -89,7 +89,7 @@ import java.util.List;
         ResultSet rs = st.executeQuery(sql))
 
         while(rs.next()){
-            curso c = new curso();
+            Curso c = new Curso();
             c.setCodCurso(rs.getInt ("cod_curso"));
             c.setNomCurso(rs.getString("nom_curso"));
             c.setAula(rs.getString("Aula"));

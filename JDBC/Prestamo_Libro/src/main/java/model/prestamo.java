@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 
-public class prestamo {
+public class Prestamo {
     private int codPrestamo;
     private int codProfesor;
     private int codLibro;

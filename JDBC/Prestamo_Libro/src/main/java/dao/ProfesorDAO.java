@@ -1,7 +1,7 @@
 package dao;
 
 import config.Conexion;
-import model.profesor;
+import model.Profesor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ public class ProfesorDAO {
     }
 
     // METODO LISTAR
-    public List<profesor> Listar (){
-        List<profesor> lista = new ArrayList<>();
+    public List<Profesor> Listar (){
+        List<Profesor> lista = new ArrayList<>();
 
         String sql = "SELECT * FROM profesor ";
 

@@ -1,8 +1,6 @@
 package model;
 
-import java.sql.SQLOutput;
-
-public class profesor {
+public class Profesor {
 
     private int codProfesor;
     private String nomProfesor;

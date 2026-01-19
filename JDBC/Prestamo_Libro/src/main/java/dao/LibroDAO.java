@@ -1,7 +1,7 @@
 package dao;
 
 import config.Conexion;
-import model.libro;
+import model.Libro;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ import java.util.List;
     }
 
     // METODO LISTAR
-    public List<libro> listar(Libro libro ) {
-        List<libro> lista = new ArrayList<>();
+    public List<Libro> listar(Libro libro ) {
+        List<Libro> lista = new ArrayList<>();
         String sql = "SELECT * FROM libro ";
 
         try (Connection conn = Conexion.getConexion();
@@ -36,7 +36,7 @@ import java.util.List;
              Resulset rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
-                libro l = new libro();
+                Libro l = new Libro();
                 l.setCodlibro(rs.getInt("cod_libro"));
                 l.setEditorial(rs.getString("editorial"));
                 l.setTitulo(rs.getString("titulo"));

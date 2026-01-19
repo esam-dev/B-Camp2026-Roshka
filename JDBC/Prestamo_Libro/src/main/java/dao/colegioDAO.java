@@ -1,6 +1,6 @@
 package dao;
 import config.Conexion;
-import model.colegio;
+import model.Colegio;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ public class ColegioDAO {
     }
 
     // LISTAR
-    public List<colegio> Listar() {
-        List<colegio> lista = new ArrayList<>();
+    public List<Colegio> Listar() {
+        List<Colegio> lista = new ArrayList<>();
         String sql = "SELECT * FROM colegio";
 
         try (Connection conn = Conexion.getConexion();
@@ -32,7 +32,7 @@ public class ColegioDAO {
              ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
-                colegio c = new colegio();
+                Colegio c = new Colegio();
                 c.setCodColegio(rs.getInt("cod_colegio"));
                 c.setNomColegio(rs.getString("nom_colegio"));
 

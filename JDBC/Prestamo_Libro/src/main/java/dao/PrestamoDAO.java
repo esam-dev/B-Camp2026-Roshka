@@ -1,7 +1,7 @@
 package dao;
 
 import config.Conexion;
-import model.prestamo;
+import model.Prestamo;
 
 import java.sql.*;
 import java.util.ArrayList;
