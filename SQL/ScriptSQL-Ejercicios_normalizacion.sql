@@ -7,7 +7,7 @@ create schema colombian_systems_ej1;
 set search_path to colombian_systems_ej1;
 
 
-CREATE TABLE cliente(
+CREATE TABLE 	cliente(
 RIF_CLIENTE varchar(20) PRIMARY KEY,
 NOM_CLIENTE varchar (100) NOT NULL,
 DIR_CLIENTE varchar (150),

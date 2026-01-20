@@ -8,7 +8,7 @@ public class Conexion {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/norm_ejerc_sql?currentSchema=prestamo_libro_ej4";
     private static final String USER = "postgres";
-    private static final String PASS = "Es0703";
+    private static final String PASS = "es0703";
 
     // Método para obtener la conexión
     public static Connection getConexion() {

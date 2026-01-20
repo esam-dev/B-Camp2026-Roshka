@@ -9,9 +9,9 @@ public class Main {
         Connection con = Conexion.getConexion();
 
         if (con != null) {
-            System.out.println("✅ Conexión exitosa");
+            System.out.println(" Conexión exitosa");
         } else {
-            System.out.println("❌ No se pudo conectar");
+            System.out.println(" No se pudo conectar");
         }
     }
 }
