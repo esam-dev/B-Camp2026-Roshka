@@ -78,19 +78,37 @@ public class MenuConsola {
                      // LibroDAO.
                  }
                  case 3 -> {
-
+                     System.out.println("Titulo: ");
+                     String titulo = sc.nextLine();
+                     System.out.println("Autor: ");
+                     String autor = sc.nextLine();
+                     System.out.println("Año:");
+                     Integer anio = leerEntero(sc);
+                     if (anio == null) break; // infotmar error leerEntero
+                     System.out.println("[Agregando libro " + titulo + " - " + autor + " (" + anio + ")]");
+                    // LivbroDAO.agregar()
                  }
                  case 4 -> {
+                     System.out.println("Id del libro a actulizar :");
+                     Integer id = leerEntero(sc);
+                     if (id == null) break;
+                     System.out.println("Nuevo Titulo: ");
+                     String titulo = sc.nextLine();
+                     System.out.println("Nuevo autor:");
+                     String autor = sc.nextLine();
+                     System.out.println("[Actualizando Libro Id " + id + "]");
+                     // LibroDAO.actualizar()
 
                  }
                  case 5 -> {
-
+                     System.out.println("Id del libro a eliminar : ");
+                     Integer id = leerEntero(sc);
+                     if(id == null) break;
+                     System.out.println("[Eliminando libro Id " + id + "]");
+                     //LibroDAO.eliminar()
                  }
-                 case 0 -> {
-
-                 }
+                 case 0 -> System.out.println("Volviendo al menu principal ...");
+                 default -> System.out.println("Opción inválida");
              }
-
-
-         }
+         } while (opcion != 0);
      }
