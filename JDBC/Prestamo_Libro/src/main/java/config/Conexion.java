@@ -1,41 +1,44 @@
+
 package config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.Duration;
+import java.util.Properties;
 
 public class Conexion {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/norm_ejerc_sql?currentSchema=prestamo_libro_ej4";
-    private static final String USER = "postgres";
-    private static final String PASS = "es0703";
+    // Leer variables de entorno, con fallback opcional (útil local)
+    private static final String URL  = System.getenv().getOrDefault("DB_URL",
+            "jdbc:postgresql://localhost:5432/norm_ejerc_sql?currentSchema=prestamo_libro_ej4");
+    private static final String USER = System.getenv().getOrDefault("DB_USER", "postgres");
+    private static final String PASS = System.getenv().getOrDefault("DB_PASS", "postgres");
 
-    // Método para obtener la conexión
-    public static Connection getConexion() {
-        Connection conn = null;
-        try {
-            // Cargar el driver de PostgreSQL
-            Class.forName("org.postgresql.Driver");
+    // Timeouts (en ms)
+    private static final int LOGIN_TIMEOUT_SECONDS = 5;
+    private static final int SOCKET_TIMEOUT_MS = (int) Duration.ofSeconds(10).toMillis();
 
-            // Obtener la conexión
-            conn = DriverManager.getConnection(URL, USER, PASS);
-        } catch (ClassNotFoundException e) {
-            System.out.println("  Driver de PostgreSQL no encontrado. Asegurate de tener el JAR del driver en tu proyecto.");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("  Error de conexión a la DB");
-            e.printStackTrace();
-        }
+    public static Connection getConexion() throws SQLException {
+        DriverManager.setLoginTimeout(LOGIN_TIMEOUT_SECONDS);
+
+        Properties props = new Properties();
+        props.setProperty("user", USER);
+        props.setProperty("password", PASS);
+        // Opcionales:
+        props.setProperty("sslmode", "disable"); // "require" si vamos  a cloud con SSL
+        props.setProperty("socketTimeout", String.valueOf(SOCKET_TIMEOUT_MS)); // timeout de lectura
+
+        Connection conn = DriverManager.getConnection(URL, props);
         return conn;
     }
 
-    // Método de prueba opcional
+    // Test
     public static void main(String[] args) {
-        Connection prueba = Conexion.getConexion();
-        if(prueba != null){
-            System.out.println(" Conexión exitosa a PostgreSQL");
-        } else {
-            System.out.println(" No se pudo conectar");
+        try (Connection c = getConexion()) {
+            System.out.println("Conexión exitosa a la base de datos");
+        } catch (SQLException e) {
+            System.err.println("No se pudo conectar: " + e.getMessage());
         }
     }
 }
