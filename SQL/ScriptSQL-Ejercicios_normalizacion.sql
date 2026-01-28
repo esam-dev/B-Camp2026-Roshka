@@ -337,8 +337,7 @@ VALUES (1, 'Licenciatura en Informática', 374 );
 INSERT INTO asignatura (cod_asignatura, nom_asignatura)
 VALUES (1, 'Programación I');
 
-
-
+insert into prestamo (cod_prestamo)
 
 
 
