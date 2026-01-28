@@ -324,10 +324,31 @@ foreign key (cod_curso) references curso (cod_curso)
 
 /* Prueba de inserciones en las tablas */
 
-SELECT * FROM prestamo_libro_ej4.profesor;
-SELECT * FROM prestamo_libro_ej4.libro;
-SELECT * FROM prestamo_libro_ej4.asignatura;
-SELECT * FROM prestamo_libro_ej4.curso;
+INSERT INTO profesor (cod_profesor, nom_profesor, cod_colegio)
+VALUES (1, 'Juan Perez', 1 );
+
+ 
+INSERT INTO libro (cod_libro, titulo, editorial)
+VALUES (1, 'Programación en Java', 'McGraw-Hill');
+
+INSERT INTO curso (cod_curso, nom_curso, aula)
+VALUES (1, 'Licenciatura en Informática', 374 );
+
+INSERT INTO asignatura (cod_asignatura, nom_asignatura)
+VALUES (1, 'Programación I');
+
+
+
+
+
+
+/* Consultas de tablas */
+	
+SELECT * FROM prestamo;
+SELECT * FROM profesor;
+SELECT * FROM libro;
+SELECT * FROM asignatura;
+SELECT * FROM curso;
 
 
 

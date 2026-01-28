@@ -1,46 +1,45 @@
 package com.elias.editorial.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "prestamo" , schema = "prestamo_libro_ej4")
+@Table(name = "prestamo", schema = "prestamo_libro_ej4")
 public class Prestamo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="cod_prestamo")
+    @Column(name = "cod_prestamo", nullable = false)
     private Long id;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cod_profesor", nullable = false)
-    @ToString.Exclude
-    private Profesor profesor;
+    private Profesor codProfesor;
 
-
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cod_libro", nullable = false)
-    @ToString.Exclude
-    private Libro libro;
+    private Libro codLibro;
 
-
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cod_asignatura", nullable = false)
-    @ToString.Exclude
-    private  Asignatura asignatura;
+    private Asignatura codAsignatura;
 
-
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cod_curso", nullable = false)
-    @ToString.Exclude
-    private Curso curso;
+    private Curso codCurso;
 
-    @JsonFormat(pattern = "yyy-MM-dd")
-    @Column(name = "fecha_prestamo" , nullable = false)
+    @NotNull
+    @Column(name = "fecha_prestamo", nullable = false)
     private LocalDate fechaPrestamo;
+
+
 }

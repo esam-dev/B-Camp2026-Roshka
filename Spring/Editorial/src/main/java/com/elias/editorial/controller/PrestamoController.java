@@ -1,5 +1,6 @@
 package com.elias.editorial.controller;
 
+import com.elias.editorial.dto.PrestamoDTO;
 import com.elias.editorial.model.Prestamo;
 import com.elias.editorial.service.PrestamoService;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class PrestamoController {
 
     //  CREAR
     @PostMapping
-    public Prestamo crear(@RequestBody Prestamo prestamo) {
-        return prestamoService.guardar(prestamo);
+    public Prestamo crear(@RequestBody PrestamoDTO dto ) {
+        return prestamoService.guardarDesdeDTO(dto);
     }
 
     //  LISTAR TODOS

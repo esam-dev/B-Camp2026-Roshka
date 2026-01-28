@@ -1,20 +1,25 @@
 package com.elias.editorial.model;
 
-
 import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "asignatura" , schema = "prestamo_libro_ej4")
+@Table(name = "asignatura", schema = "prestamo_libro_ej4")
 public class Asignatura {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_asignatura")
-    private Long Id;
+    @Column(name = "cod_asignatura", nullable = false)
+    private Long id;
 
-    @Column(name = "nom_asignatura", nullable = false , length = 100)
-    private String nombre;
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "nom_asignatura", nullable = false)
+    private String nomAsignatura;
+
 
 }
