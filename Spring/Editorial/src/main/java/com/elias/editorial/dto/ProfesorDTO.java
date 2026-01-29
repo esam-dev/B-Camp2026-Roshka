@@ -5,6 +5,7 @@ public class ProfesorDTO {
     private String nombre;
     private Long codColegio;
 
+
     // Getters y setters
     public String  getNombre (){
         return nombre;
@@ -22,3 +23,4 @@ public class ProfesorDTO {
         this.codColegio = codColegio;
     }
 }
+

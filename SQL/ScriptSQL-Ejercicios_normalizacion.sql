@@ -337,7 +337,9 @@ VALUES (1, 'Licenciatura en Informática', 374 );
 INSERT INTO asignatura (cod_asignatura, nom_asignatura)
 VALUES (1, 'Programación I');
 
-insert into prestamo (cod_prestamo)
+INSERT INTO colegio (cod_colegio, nom_colegio)
+VALUES (3, 'Colegio Nacional Regina Marecos');
+
 
 
 
@@ -348,6 +350,16 @@ SELECT * FROM profesor;
 SELECT * FROM libro;
 SELECT * FROM asignatura;
 SELECT * FROM curso;
+select * from colegio;
+
+
+-- PK se llama cod_colegio:
+SELECT * FROM colegio WHERE cod_colegio = 2;
+
+SELECT cod_colegio, nom_colegio FROM colegio;
+
+
+
 
 
 
