@@ -5,7 +5,7 @@ import com.elias.editorial.model.Libro;
 import java.util.List;
 
 public interface LibroService {
-    Libro guararDesdeDTO(LibroDTO dto);
+    Libro guardarDesdeDTO(LibroDTO dto);
     List<Libro> listarTodos();
     Libro buscarPorId (Long id );
     Libro actualizar (Long id , Libro libro);
