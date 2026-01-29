@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ColegioServiceImpl {
+public class ColegioServiceImpl  implements  ColegioService {
 
     private final ColegioRepository colegioRepository;
 
@@ -46,6 +46,4 @@ public class ColegioServiceImpl {
     public void eliminar (Long id ){
         colegioRepository.deleteById(id);
     }
-
-
 }
