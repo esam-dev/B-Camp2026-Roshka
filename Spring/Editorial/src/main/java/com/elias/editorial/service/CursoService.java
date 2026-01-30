@@ -1,8 +1,8 @@
 package com.elias.editorial.service;
 
-import com.elias.editorial.dto.ColegioDTO;
 import com.elias.editorial.dto.CursoDTO;
-import com.elias.editorial.model.Colegio;
+import com.elias.editorial.dto.CursoDTO;
+import com.elias.editorial.model.Curso;
 
 import java.util.List;
 
