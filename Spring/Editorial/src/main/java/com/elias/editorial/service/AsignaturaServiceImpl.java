@@ -32,7 +32,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
     }
 
     @Override
-    public Asignatura buscarPorId (Long id ){
+    public Asignatura buscarPorId (Long id ){   
         return asignaturaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Asignatura no encontrada"));
     }

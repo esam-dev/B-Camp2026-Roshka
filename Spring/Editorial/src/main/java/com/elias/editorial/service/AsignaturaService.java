@@ -12,6 +12,6 @@ public interface AsignaturaService {
     Asignatura guardarDesdeDTO (AsignaturaDTO dto);
     List<Asignatura> listarTodos();
     Asignatura buscarPorId (Long id);
-    Curso actualizar (Long id ,Asignatura asignatura );
+    Asignatura actualizar (Long id ,Asignatura asignatura );
     void eliminar (Long id );
 }
