@@ -1,11 +1,17 @@
 package com.example.demo.usuario;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 @Entity
 @Table (name = "usuarios")
 public class Usuario {
@@ -14,8 +20,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column (nullable = false , unique = true )
     private String username; 
+
     private String password;
+    
     private boolean enabled;
 
 
