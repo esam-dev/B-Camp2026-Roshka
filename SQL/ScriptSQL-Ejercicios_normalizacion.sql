@@ -322,6 +322,16 @@ foreign key (cod_asignatura) references asignatura (cod_asignatura),
 foreign key (cod_curso) references curso (cod_curso)
 );
 
+
+create table usuarios (
+id SERIAL primary key,
+username  varchar (150) not null, 
+password varchar (255) not null, 
+enabled Boolean default true,
+created_at timestamp default  current_timestamp 
+
+)
+
 /* Prueba de inserciones en las tablas */
 
 INSERT INTO profesor (cod_profesor, nom_profesor, cod_colegio)

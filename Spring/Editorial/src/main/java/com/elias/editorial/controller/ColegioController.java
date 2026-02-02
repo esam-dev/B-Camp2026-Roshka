@@ -29,7 +29,7 @@ public class ColegioController {
     public Colegio buscarPorId (@PathVariable Long id ){
         return colegioService.buscarPorId(id);
     }
-    @PutMapping("/{id")
+    @PutMapping("/{id}")
     public Colegio actualizar (@PathVariable Long id , @RequestBody Colegio colegio ){
         return colegioService.actualizar(id, colegio);
     }
