@@ -1,5 +1,7 @@
 package com.example.demo.usuario;
 
+import com.example.demo.usuario.Usuario;
+import com.example.demo.usuario.UsuarioRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,7 @@ public class UsuarioService {
         this.encoder = encoder;     
     }
     // Crear usuario (register)
-    public void registrar (String Usuario, String password){
+    public void registrar (String username, String password){
 
         // Evitar duplicados 
         if (repo.findByUsername(username).isPresent()){
@@ -26,5 +28,7 @@ public class UsuarioService {
         u.setUsername(username);
         u.setPassword(encoder.encode(password)); // Encripta 
         u.setEnabled(true);
+
+        repo.save(u);
     }
 }
