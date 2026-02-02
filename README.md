@@ -11,7 +11,7 @@ Este repositorio reúne ejercicios y proyectos desarrollados en el Bootcamp Rosh
 Herramientas y conceptos clave:
 
 - **Maven** y **mvnw** para gestión de dependencias  
-- **Eclipse** (.classpath, .project, .settings)  
+- **Eclipse** o **Intellij IDEA **(.classpath, .project, .settings)  
 - **PostgreSQL** como base de datos relacional  
 - **JPA** (Spring Data) y **JDBC** (PreparedStatement)  
 - **JWT** para autenticación basada en tokens  
